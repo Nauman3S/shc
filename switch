@@ -1,0 +1,28 @@
+#!/bin/bash
+
+cd /home/pi/.attract
+wget http://eazyhax.com/downloads/attract/scripts.tar
+tar -xvf scripts.tar
+rm scripts.tar
+cd /home/pi/.attract/emulators
+wget http://eazyhax.com/downloads/attract/scripts.cfg
+cd /home/pi/.attract/romlists
+wget http://eazyhax.com/downloads/attract/scripts.txt
+cp /home/pi/.attract/attract.cfg attract.cfg.bkup
+
+echo ""  >> /home/pi/.attract/attract.cfg
+echo "display scripts" >> /home/pi/.attract/attract.cfg
+echo "        layout               Basic" >> /home/pi/.attract/attract.cfg
+echo "        romlist              scripts" >> /home/pi/.attract/attract.cfg
+echo "        in_cycle             yes" >> /home/pi/.attract/attract.cfg
+echo "        in_menu              yes" >> /home/pi/.attract/attract.cfg
+echo "        filter               All" >> /home/pi/.attract/attract.cfg
+echo "        filter               Favourites" >> /home/pi/.attract/attract.cfg
+echo "                rule                 Favourite equals 1" >> /home/pi/.attract/attract.cfg
+
+cd /home/pi/RetroPie/retropiemenu
+wget http://eazyhax.com/downloads/attract/Switch%20To%20Attract%20Mode.sh
+chmod 755 Switch\ To\ Attract\ Mode.sh
+
+echo "All Done! You will need to reboot now. (sudo reboot)"
+exit
